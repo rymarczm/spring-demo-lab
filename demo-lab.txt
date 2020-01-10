@@ -1,0 +1,126 @@
+----- cwiczenie 1 ----
+
+1.Generowanie projektu:
+
+	- strona: https://start.spring.io/index.html
+	
+	- name:		spring-demo
+	- package:	pl.altkom.spring
+	
+2.Opcja develompment:
+
+	- dodać do pom.xml:
+	
+	<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-devtools -->
+	<dependency>
+	    <groupId>org.springframework.boot</groupId>
+	    <artifactId>spring-boot-devtools</artifactId>
+	    <!--<version>2.2.2.RELEASE</version>-->
+	</dependency>
+	
+3.Opcja web:
+
+	- dodać do pom.xml:
+
+	<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web -->
+	<dependency>
+	    <groupId>org.springframework.boot</groupId>
+	    <artifactId>spring-boot-starter-web</artifactId>
+	    <!--<version>2.2.2.RELEASE</version>-->
+	</dependency>
+	
+4.Opcja jdbc/jpa/data:
+
+	- dodać do pom.xml:
+	
+	<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-jpa -->
+	<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-data-jpa</artifactId>
+		<!-- <version>2.2.2.RELEASE</version> -->
+	</dependency>
+	
+	oraz:
+	
+	<!-- https://mvnrepository.com/artifact/com.h2database/h2 -->
+	<dependency>
+	    <groupId>com.h2database</groupId>
+	    <artifactId>h2</artifactId>
+	    <version>1.4.200</version>
+	    <scope>test</scope>
+	</dependency>
+	
+5.Opcja	javax.inject oraz annotation:(@Inject, @Qualifier, @PostConstruct, @PreDestroy)
+
+	<!-- https://mvnrepository.com/artifact/javax.inject/javax.inject -->
+	<dependency>
+	    <groupId>javax.inject</groupId>
+	    <artifactId>javax.inject</artifactId>
+	    <version>1</version>
+	</dependency>
+	
+	<!-- https://mvnrepository.com/artifact/javax.annotation/javax.annotation-api -->
+	<dependency>
+	    <groupId>javax.annotation</groupId>
+	    <artifactId>javax.annotation-api</artifactId>
+	    <version>1.3.2</version>
+	</dependency>
+	
+	
+	
+6.Zmiana struktury pakietów:
+
+	- pl.altkom.spring.app
+	
+	- pl.altkom.spring.cfg
+	
+	- pl.altkom.spring.beans
+	
+	- pl.altkom.spring.util
+	
+7.Refaktoryzacja plików:
+
+	- zmiana nazwy : SpringDemoApplication -> SpringDemoLabApplication
+
+	- SpringDemoLabApplication przenosimy do pakietu: pl.altkom.spring.app
+	
+8.Tworzymy plik w pakiecie pl.altkom.spring.cfg: SpringJavaConfig.java
+
+	- w SpringJavaConfig: ustawiamy skanowanie na pakiety, zawierające komponenty spring'a
+	
+
+9.Tworzymy interfejs: Info+printMessage(String msg)
+
+
+10.Implementujemy : StandardInfo oraz ExtendedInfo
+
+
+11.Tworzymy anotacje kwalifikacyjne komponenty:@ExtInfo oraz @StdInfo zawierające (javax.inject.Qualifier)
+
+
+12.Tworzymy komponent serwisu: InfoService+printInfo()
+
+	- za pomocą: @Value("${message}") pobieramy komunikat do wyswietlenia
+	
+
+13.Tworzymy komponent klienta InfoClient+invokeInfoService()
+
+
+14.W pliku aplikacji SpringDemoLabApplication:
+	
+	- wstrzykujemy komponent klienta
+	
+	- implemtujemy CommandLineRunner(uruchmiając klienta w metodzie: run(String... args))
+	
+	- implementujemy metodę, zliczjącą beany w kontenerze: beansCountInfo() 
+	
+
+15.W komponentach: StandardInfo oraz ExtendedInfo implementujemy metody cyklu zycia:
+
+	- @PostConstruct->init() oraz @PreDestroy->destroy()
+	
+	
+16.
+	
+	
+	
